@@ -51,7 +51,7 @@ dependencyManagement {
 
 publishing {
 	publications {
-		mavenJava(MavenPublication) {
+		gpr(MavenPublication) {
 			from components.java
 		}
 	}
