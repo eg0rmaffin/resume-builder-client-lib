@@ -53,6 +53,7 @@ publishing {
 	publications {
 		gpr(MavenPublication) {
 			from components.java
+			groupId = 'app.resumebuilder'
 			artifactId = 'eurekaclientmodel' // Имя артефакта, которое будет использоваться
 		}
 	}
