@@ -53,8 +53,32 @@ publishing {
 	publications {
 		gpr(MavenPublication) {
 			from components.java
-			groupId = 'app.resumebuilder'
-			artifactId = 'eurekaclientmodel' // Имя артефакта, которое будет использоваться
+			pom {
+				name = 'eurekaclientmodel'
+				description = 'Library for Eureka client model'
+				url = 'https://github.com/eg0rmaffin/resume-builder-client-lib'
+
+				licenses {
+					license {
+						name = 'The Apache License, Version 2.0'
+						url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+					}
+				}
+
+				developers {
+					developer {
+						id = 'eg0rmaffin'
+						name = 'Egor Markin'
+						email = 'eg0rmaffin@gmail.com'
+					}
+				}
+
+				scm {
+					connection = 'scm:git:git://github.com/eg0rmaffin/resume-builder-client-lib.git'
+					developerConnection = 'scm:git:ssh://github.com:eg0rmaffin/resume-builder-client-lib.git'
+					url = 'https://github.com/eg0rmaffin/resume-builder-client-lib'
+				}
+			}
 		}
 	}
 	repositories {
