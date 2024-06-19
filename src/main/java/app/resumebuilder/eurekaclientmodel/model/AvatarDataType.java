@@ -23,7 +23,9 @@ public class AvatarDataType {
     @Column(name = "name")
     private String avatar;
 
-    private String fuckup;
+    public void nothing() {
+        System.out.println("asdasdad");
+    }
 
     @Override
     public boolean equals(Object o) {
