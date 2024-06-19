@@ -23,6 +23,8 @@ public class AvatarDataType {
     @Column(name = "name")
     private String avatar;
 
+    // marat test
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
