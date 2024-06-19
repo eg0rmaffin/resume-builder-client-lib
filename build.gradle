@@ -59,8 +59,8 @@ publishing {
 		maven {
 			url = uri('https://maven.pkg.github.com/eg0rmaffin/resume-builder-client-lib')
 			credentials {
-				username = "token"
-				password = System.getenv("GITHUB_TOKEN")
+				username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+				password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
 			}
 		}
 	}
