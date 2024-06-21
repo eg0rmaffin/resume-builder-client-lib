@@ -52,3 +52,7 @@ gradle.projectsEvaluated {
         }
     }
 }
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
