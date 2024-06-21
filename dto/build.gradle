@@ -16,6 +16,13 @@ java {
 repositories {
     mavenCentral()
     mavenLocal()
+    maven {
+        url = uri("https://maven.pkg.github.com/eg0rmaffin/resume-builder-client-lib")
+        credentials {
+            username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+            password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
+        }
+    }
 }
 
 dependencies {
@@ -31,6 +38,7 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     implementation("org.modelmapper:modelmapper:3.2.0")
+    implementation 'app.resumebuilder:resume-builder-client-lib:0.0.2-SNAPSHOT'
 }
 
 publishing {
