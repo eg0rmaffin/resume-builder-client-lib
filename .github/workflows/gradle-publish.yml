@@ -46,6 +46,9 @@ jobs:
 
       - name: Build with Gradle
         run: ./gradlew clean build --info
+        env:
+          USERNAME: ${{ secrets.GITHUB_ACTOR }}
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish to GitHub Packages
         run: ./gradlew publishAll --info
