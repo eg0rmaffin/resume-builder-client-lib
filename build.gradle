@@ -38,12 +38,16 @@ subprojects {
     }
 }
 
-afterEvaluate {
+gradle.projectsEvaluated {
     task publishAll {
         doLast {
             subprojects.each { subproject ->
-                println "Adding dependency on ${subproject.path}:publish"
-                dependsOn "${subproject.path}:publish"
+                if (subproject.tasks.findByName('publish')) {
+                    println "Adding dependency on ${subproject.path}:publish"
+                    dependsOn "${subproject.path}:publish"
+                } else {
+                    println "No publish task found for ${subproject.path}"
+                }
             }
         }
     }
