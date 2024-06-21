@@ -30,7 +30,7 @@ jobs:
         run: chmod +x ./gradlew
 
       - name: Show current directory
-          run: pwd
+        run: pwd
 
       - name: List files in the current directory
         run: ls -la
