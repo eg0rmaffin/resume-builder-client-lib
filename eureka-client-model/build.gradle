@@ -54,7 +54,7 @@ publishing {
 		gpr(MavenPublication) {
 			from components.java
 			pom {
-				name = 'eurekaclientmodel'
+				name = 'eureka-client-model'
 				description = 'Library for Eureka client model'
 				url = 'https://github.com/eg0rmaffin/resume-builder-client-lib'
 

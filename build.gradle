@@ -39,13 +39,5 @@ subprojects {
 }
 
 task publishAll {
-    doLast {
-        subprojects.each { subproject ->
-            if (subproject.plugins.hasPlugin('maven-publish')) {
-                subproject.tasks.withType(PublishToMavenRepository).each { publishTask ->
-                    publishTask.execute()
-                }
-            }
-        }
-    }
+    dependsOn subprojects.collect { it.tasks.matching { task -> task.name == 'publish' } }
 }
