@@ -40,7 +40,7 @@ subprojects {
 
 task publishAll {
     subprojects.each { subproject ->
-        dependsOn subproject.tasks.withType(Publish)
+        dependsOn subproject.tasks.matching { it.name == 'publish' }
     }
 }
 
