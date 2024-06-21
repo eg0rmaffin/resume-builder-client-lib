@@ -29,6 +29,12 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x ./gradlew
 
+      - name: Show current directory
+          run: pwd
+
+      - name: List files in the current directory
+        run: ls -la
+
       - name: Display settings.gradle
         run: cat settings.gradle
 
