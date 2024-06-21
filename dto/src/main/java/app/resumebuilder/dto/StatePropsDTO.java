@@ -1,6 +1,5 @@
-package app.resume_builder.resume_builder_libs.entity.dto;
+package app.resumebuilder.dto;
 
-import app.resume_builder.resume_builder_libs.entity.model.T_BlockElement;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

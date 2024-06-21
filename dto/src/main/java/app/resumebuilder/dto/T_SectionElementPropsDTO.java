@@ -1,4 +1,4 @@
-package app.resume_builder.resume_builder_libs.entity.dto;
+package app.resumebuilder.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
