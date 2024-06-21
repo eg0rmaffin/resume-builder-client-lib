@@ -38,6 +38,13 @@ subprojects {
     }
 }
 
-task publishAll {
-    dependsOn subprojects.collect { it.tasks.matching { task -> task.name == 'publish' } }
+afterEvaluate {
+    task publishAll {
+        doLast {
+            subprojects.each { subproject ->
+                println "Adding dependency on ${subproject.path}:publish"
+                dependsOn "${subproject.path}:publish"
+            }
+        }
+    }
 }
