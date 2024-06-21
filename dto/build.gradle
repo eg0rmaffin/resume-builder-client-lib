@@ -39,6 +39,7 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     implementation("org.modelmapper:modelmapper:3.2.0")
     implementation 'app.resumebuilder:resume-builder-client-lib:0.0.2-SNAPSHOT'
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:4.1.0' // Добавьте версию
 }
 
 publishing {
