@@ -37,3 +37,7 @@ subprojects {
         }
     }
 }
+
+task publishAll {
+    dependsOn subprojects.publish
+}
