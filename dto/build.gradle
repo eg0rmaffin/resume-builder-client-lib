@@ -84,3 +84,7 @@ publishing {
         }
     }
 }
+
+tasks.named('bootJar').configure {
+    enabled = false
+}
