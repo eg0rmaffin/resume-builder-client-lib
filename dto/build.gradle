@@ -1,0 +1,77 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+    id 'java-library'
+    id 'org.springframework.boot' version '3.2.2'
+    id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'app.resumebuilder'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    sourceCompatibility = '17'
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+    implementation 'org.modelmapper:modelmapper:3.2.0'
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    implementation("org.modelmapper:modelmapper:3.2.0")
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            pom {
+                name = 'dto'
+                description = 'Library for Data Transfer Objects'
+                url = 'https://github.com/eg0rmaffin/resume-builder-client-lib'
+
+                licenses {
+                    license {
+                        name = 'The Apache License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id = 'eg0rmaffin'
+                        name = 'Egor Markin'
+                        email = 'eg0rmaffin@gmail.com'
+                    }
+                }
+
+                scm {
+                    connection = 'scm:git:git://github.com/eg0rmaffin/resume-builder-client-lib.git'
+                    developerConnection = 'scm:git:ssh://github.com:eg0rmaffin/resume-builder-client-lib.git'
+                    url = 'https://github.com/eg0rmaffin/resume-builder-client-lib'
+                }
+            }
+        }
+    }
+    repositories {
+        maven {
+            url = uri('https://maven.pkg.github.com/eg0rmaffin/resume-builder-client-lib')
+            credentials {
+                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+                password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
+            }
+        }
+    }
+}

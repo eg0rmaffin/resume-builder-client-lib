@@ -1,0 +1,93 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.2.2'
+	id 'io.spring.dependency-management' version '1.1.4'
+	id 'maven-publish'
+	id 'java-library'
+}
+
+
+group = 'app.resumebuilder'
+version = '0.0.2-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+	mavenLocal()
+}
+
+ext {
+	set('springCloudVersion', "2023.0.0")
+}
+
+dependencies {
+	implementation 'org.modelmapper:modelmapper:3.2.0'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+	implementation group: 'org.liquibase', name: 'liquibase-core', version: '4.25.1'
+	implementation 'org.springframework.cloud:spring-cloud-starter-stream-kafka:4.1.0'
+
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok:1.18.30'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
+}
+
+
+
+publishing {
+	publications {
+		gpr(MavenPublication) {
+			from components.java
+			pom {
+				name = 'eurekaclientmodel'
+				description = 'Library for Eureka client model'
+				url = 'https://github.com/eg0rmaffin/resume-builder-client-lib'
+
+				licenses {
+					license {
+						name = 'The Apache License, Version 2.0'
+						url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+					}
+				}
+
+				developers {
+					developer {
+						id = 'eg0rmaffin'
+						name = 'Egor Markin'
+						email = 'eg0rmaffin@gmail.com'
+					}
+				}
+
+				scm {
+					connection = 'scm:git:git://github.com/eg0rmaffin/resume-builder-client-lib.git'
+					developerConnection = 'scm:git:ssh://github.com:eg0rmaffin/resume-builder-client-lib.git'
+					url = 'https://github.com/eg0rmaffin/resume-builder-client-lib'
+				}
+			}
+		}
+	}
+	repositories {
+		maven {
+			url = uri('https://maven.pkg.github.com/eg0rmaffin/resume-builder-client-lib')
+			credentials {
+				username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+				password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
+			}
+		}
+	}
+}
