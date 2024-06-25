@@ -26,6 +26,7 @@ repositories {
 }
 
 dependencies {
+    implementation 'org.modelmapper:modelmapper:2.3.8'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok:1.18.30'
 }
