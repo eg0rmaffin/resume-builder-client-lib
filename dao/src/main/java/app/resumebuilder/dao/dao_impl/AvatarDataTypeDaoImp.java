@@ -28,6 +28,10 @@ public class AvatarDataTypeDaoImp implements AvatarDataTypeDao {
     private final String ID = "id";
     private final String SELECT = "from AvatarDataType";
 
+    public void Nothing(){
+        System.out.println("vsdsd");
+    }
+
     @PersistenceContext
     private EntityManager entityManager;
 
