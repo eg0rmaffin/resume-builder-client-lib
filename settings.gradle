@@ -1,2 +1,2 @@
 rootProject.name = 'resume-builder-lib'
-include 'eureka-client-model', 'dto'
+include 'eureka-client-model', 'dto', 'dao'
