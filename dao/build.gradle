@@ -1,0 +1,92 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.2.2'
+    id 'io.spring.dependency-management' version '1.1.4'
+    id 'maven-publish'
+    id 'java-library'
+}
+
+group = 'app.resumebuilder'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    sourceCompatibility = '17'
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        url = uri("https://maven.pkg.github.com/eg0rmaffin/resume-builder-client-lib")
+        credentials {
+            username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+            password = project.findProperty("gpr.token") ?: System.getenv("TOKEN")
+        }
+    }
+}
+
+dependencies {
+    implementation 'org.modelmapper:modelmapper:2.3.8'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    implementation 'app.resumebuilder:eureka-client-model:0.0.3-SNAPSHOT'
+    implementation 'app.resumebuilder:dto:0.0.2-SNAPSHOT'
+}
+
+println("asdadsa")
+publishing {
+    publications {
+        gpr(MavenPublication) {
+            from components.java
+            versionMapping {
+                usage('java-api') {
+                    fromResolutionResult()
+                }
+                usage('java-runtime') {
+                    fromResolutionResult()
+                }
+            }
+            pom {
+                name = 'eureka-client-model'
+                description = 'Library for Eureka client model'
+                url = 'https://github.com/eg0rmaffin/resume-builder-client-lib'
+
+                licenses {
+                    license {
+                        name = 'The Apache License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id = 'maratiik'
+                        name = 'Marat Nigamatdyanov'
+                        email = 'maratpeople@gmail.com'
+                    }
+                }
+
+                scm {
+                    connection = 'scm:git:git://github.com/eg0rmaffin/resume-builder-client-lib.git'
+                    developerConnection = 'scm:git:ssh://github.com:eg0rmaffin/resume-builder-client-lib.git'
+                    url = 'https://github.com/eg0rmaffin/resume-builder-client-lib'
+                }
+            }
+        }
+    }
+    repositories {
+        maven {
+            url = uri('https://maven.pkg.github.com/eg0rmaffin/resume-builder-client-lib')
+            credentials {
+                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+                password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
+            }
+        }
+    }
+}
