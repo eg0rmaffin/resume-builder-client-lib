@@ -30,15 +30,9 @@ ext {
 }
 
 dependencies {
-	implementation 'org.modelmapper:modelmapper:3.2.0'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
-	implementation group: 'org.liquibase', name: 'liquibase-core', version: '4.25.1'
-	implementation 'org.springframework.cloud:spring-cloud-starter-stream-kafka:4.1.0'
-
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok:1.18.30'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 dependencyManagement {
