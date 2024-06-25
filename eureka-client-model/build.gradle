@@ -8,7 +8,7 @@ plugins {
 
 
 group = 'app.resumebuilder'
-version = '0.0.2-SNAPSHOT'
+version = '0.0.3-SNAPSHOT'
 
 java {
 	sourceCompatibility = '17'
@@ -47,6 +47,14 @@ publishing {
 	publications {
 		gpr(MavenPublication) {
 			from components.java
+			versionMapping {
+				usage('java-api') {
+					fromResolutionResult()
+				}
+				usage('java-runtime') {
+					fromResolutionResult()
+				}
+			}
 			pom {
 				name = 'eureka-client-model'
 				description = 'Library for Eureka client model'
