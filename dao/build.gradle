@@ -53,8 +53,8 @@ publishing {
                 }
             }
             pom {
-                name = 'eureka-client-model'
-                description = 'Library for Eureka client model'
+                name = 'dao'
+                description = 'Library for DAO'
                 url = 'https://github.com/eg0rmaffin/resume-builder-client-lib'
 
                 licenses {
