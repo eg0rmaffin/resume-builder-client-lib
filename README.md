@@ -25,6 +25,7 @@ implementation 'app.resumebuilder:resume-builder-client-lib:0.0.2-SNAPSHOT'
 Вам понадобится аккаунт github и read-token, который лежит в mattermost. 
 
 
+
 ## Установка переменных
 
 Создайте в своем локальном User/.gradle файл gradle.properties и установите переменные `gpr.user` и `gpr.token`. Рид токен возьмите в маттермосте.
